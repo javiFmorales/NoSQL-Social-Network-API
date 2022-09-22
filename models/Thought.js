@@ -22,13 +22,13 @@ const reactionSchema = new Schema({
             default: Date.now
         },
     },
-    toJson: {
-        getters: true
-    }
+    // toJson: {
+    //     getters: true
+    // }
 })
 
 const thoughtSchema = new Schema({
-   
+
     thoughtText: {
         type: String,
         required: true,
@@ -39,21 +39,29 @@ const thoughtSchema = new Schema({
     createdAt: {
         timestamp: {
             type: Date,
-            default: Date.now
+            default: Date.now()
         },
     },
     usernsame: {
         type: String,
         required: true,
-    },
-    reactions: [reactionSchema],
 
-     timestamp: {
+
+    },
+    reactions: [reactionSchema]
+
+},
+    {
+        timestamps: true,
         toJson: {
+            virtuals: true,
             getters: true
         }
-    },
-})
+    }
+
+
+
+)
 
 
 const Thought = model('Thought', thoughtSchema)

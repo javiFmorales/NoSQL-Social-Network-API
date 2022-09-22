@@ -9,14 +9,14 @@ const userSchema = new Schema({
         trim: true
     },
     email: {
-        type: string,
+        type: String,
         unique: true,
         lowercase: true,
         trim: true,
         required: true,
         validate: {
             validator: validateEmail = (email) => {
-                return /^\([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/.test(email)
+                return '/^\([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/'.test(email)
             },
             message: 'You must enter a valid email',
         },
@@ -37,7 +37,7 @@ const userSchema = new Schema({
     {
         toJSON: {
             virtuals: true,
-            getters: true,
+            getters: true
         }
     }
 )
